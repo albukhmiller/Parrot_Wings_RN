@@ -3,25 +3,23 @@ import { StyleSheet, Image, View, ScrollView, Text, TouchableOpacity } from 'rea
 import FloatingLabelTextInput from './FloatingLabelTextInput'
 import CustomButton from './CustomButton'
 
-export default class SignIn extends React.Component {
-    render() {
-        return (
-            <ScrollView>
-                <View style={styles.container}>
-                    <Image style={styles.logo} source={require("../assets/ic_logo.png")} />
-                    {/* <FloatingLabelTextInput style={styles.textInputField} placeholder="Имя пользователя" />
-                    <FloatingLabelTextInput style={styles.textInputField} isSecure={true} placeholder="Пароль" />
-                    <CustomButton style={styles.button} title="Войти"
-                        onClick={() => console.log('qweqwe')} />
-                    <TouchableOpacity onPress={() => console.log('23')}>
-                        <Text style={styles.label}>Зарегистрироваться?</Text>
-                    </TouchableOpacity> */}
+export default function SignIn({ navigation }) {
+    return (
+        <ScrollView>
+            <View style={styles.container}>
+                <Image style={styles.logo} source={require("../assets/ic_logo.png")} />
+                <FloatingLabelTextInput style={styles.textInputField} placeholder="Имя пользователя" />
+                <FloatingLabelTextInput style={styles.textInputField} isSecure={true} placeholder="Пароль" />
+                <CustomButton style={styles.button} title="Войти"
+                    onClick={() => console.log('qweqwe')} />
+                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                    <Text style={styles.label}>Зарегистрироваться?</Text>
+                </TouchableOpacity>
 
-                </View>
-            </ScrollView>
-        )
-    };
-}
+            </View>
+        </ScrollView>
+    )
+};
 
 const styles = StyleSheet.create({
     container: {

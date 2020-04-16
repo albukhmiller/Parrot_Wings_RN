@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, View, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView} from 'react-native';
 import FloatingLabelTextInput from './FloatingLabelTextInput'
 import CustomButton from './CustomButton'
 
@@ -8,7 +8,6 @@ export default class SignUp extends React.Component {
         return (
             <ScrollView>
                 <View style={styles.container}>
-                    <Image style={styles.logo} source={require("../assets/ic_logo.png")} />
                     <FloatingLabelTextInput style={styles.textInputField} placeholder="Имя пользователя" />
                     <FloatingLabelTextInput style={styles.textInputField} placeholder="Email" />
                     <FloatingLabelTextInput style={styles.textInputField} isSecure={true} placeholder="Пароль" />

@@ -1,9 +1,17 @@
 import React from 'react';
-import { StyleSheet, ScrollView} from 'react-native';
+
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 
 export default class App extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,9 +32,17 @@ export default class App extends React.Component {
     if (!this.state.isReady) {
       return <AppLoading />;
     }
-    
+
     return (
-      <SignUp/> 
+      <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{headerShown : false}} name="SignIn" component={SignIn} />
+        <Stack.Screen name="SignUp" component={SignUp}  options={{
+          title: 'Регистрация'}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
     )
   };
 }
+
+const Stack = createStackNavigator();
