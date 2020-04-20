@@ -7,8 +7,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 export default class App extends React.Component {
 
@@ -34,15 +34,22 @@ export default class App extends React.Component {
     }
 
     return (
-      <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen options={{headerShown : false}} name="SignIn" component={SignIn} />
-        <Stack.Screen name="SignUp" component={SignUp}  options={{
-          title: 'Регистрация'}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer theme={navigationContainer}>
+        <Stack.Navigator>
+          <Stack.Screen options={{ headerShown: false }} name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignUp" component={SignUp} options={{
+            title: 'Регистрация'
+          }} />
+        </Stack.Navigator>
+      </NavigationContainer>
     )
   };
 }
+
+const navigationContainer = {
+  colors: {
+    background: 'white'
+  }
+};
 
 const Stack = createStackNavigator();

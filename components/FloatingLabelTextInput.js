@@ -13,7 +13,7 @@ export default function FloatingLabelTextInput(props) {
         <Form>
             <Item floatingLabel style={props.style}>
                 <Label style={styles.textInput}>{props.placeholder} </Label>
-                <Input style={styles.textInput} secureTextEntry={props.isSecure}/>
+                <Input style={styles.textInput} secureTextEntry={props.isSecure} onChangeText = {props.onChangeText}/>
             </Item>
         </Form>
     );

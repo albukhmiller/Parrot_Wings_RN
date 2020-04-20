@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Image, View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import FloatingLabelTextInput from './FloatingLabelTextInput'
 import CustomButton from './CustomButton'
 
+import { login } from "../networking/AuthService"
+
 export default function SignIn({ navigation }) {
+    const [email, password] = useState('');
+
     return (
         <ScrollView>
             <View style={styles.container}>
                 <Image style={styles.logo} source={require("../assets/ic_logo.png")} />
-                <FloatingLabelTextInput style={styles.textInputField} placeholder="Имя пользователя" />
-                <FloatingLabelTextInput style={styles.textInputField} isSecure={true} placeholder="Пароль" />
+                <FloatingLabelTextInput style={styles.textInputField} placeholder="Имя пользователя"
+                    onChangeText={email => setEmail(email)} />
+                <FloatingLabelTextInput style={styles.textInputField} isSecure={true} placeholder="Пароль"
+                    onChangeText={password => setPassword(password)} />
                 <CustomButton style={styles.button} title="Войти"
-                    onClick={() => console.log('qweqwe')} />
+                    onClick={() => {
+                        console.log(email, password)
+                        login(email, password)
+                            .then(json => console.log(json))
+                            .catch(error => console.log(error));
+                    }} />
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                     <Text style={styles.label}>Зарегистрироваться?</Text>
                 </TouchableOpacity>
-
             </View>
         </ScrollView>
     )

@@ -16,5 +16,5 @@ export default function CustomButton(props) {
             onPress={props.onClick}>
             <Text>{props.title}</Text>
         </Button>
-    );
-}
+    ); 
+} 
