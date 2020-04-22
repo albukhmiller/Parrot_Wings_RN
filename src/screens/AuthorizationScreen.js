@@ -10,7 +10,10 @@ import { connect } from 'react-redux';
 export class AuthorizatonScreen extends React.Component {
 
     render() {
-        const { isLoginForm } = this.props
+        const { isAuthorized, isLoginForm, navigation } = this.props
+
+        if (isAuthorized)
+            navigation.navigate('MainScreen')
 
         return (
             <Container style={styles.container}>
@@ -21,7 +24,7 @@ export class AuthorizatonScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: { 
+    container: {
         flex: 1,
         backgroundColor: '#fff',
     }
@@ -29,7 +32,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        isLoginForm: state.authReducer.isLoginForm
+        isLoginForm: state.authReducer.isLoginForm,
+        isAuthorized: state.authReducer.isAuthorized
     };
 };
 

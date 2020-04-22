@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, Header, Content, Form, Item, Input, Label } from 'native-base';
+import { Form, Item, Input, Label } from 'native-base';
 
 const styles = StyleSheet.create({
     textInput: {

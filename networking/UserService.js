@@ -1,5 +1,9 @@
-import { getAxios as httpClient } from './config'
+import { getAxios } from './config'
 
-export async function getUserInfo() {
-    return await httpClient.get('/api/protected/user-info')
+export class UserService {
+    static getUserInfo = async () => {
+        const httpClient = await getAxios();
+
+        return await httpClient.get('/api/protected/user-info')
+    }
 }

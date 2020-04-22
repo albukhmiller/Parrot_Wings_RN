@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 export default function authReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case AUTH_SUCCESS_ACTION: {
-            return { ...state, token: action.token }
+            return { ...state, isAuthorized: true, token: action.token }
         }
         case NAVIGATE_TO_LOGIN: {
             return { ...state, isLoginForm: action.isLoginForm }
