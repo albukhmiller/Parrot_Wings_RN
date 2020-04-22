@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { StyleSheet, Image, View, ScrollView, Text, TouchableOpacity } from 'react-native';
 import FloatingLabelTextInput from './FloatingLabelTextInput'
 import CustomButton from './CustomButton'
 
-import { login } from "../networking/AuthService"
+import { loginAction } from "../src/actions/AuthActions"
+import { navigateToLoginAction } from "../src/actions/AuthActions"
 
-export default function SignIn({ navigation }) {
-    const [email, password] = useState('');
+export default function SignIn() {
+
+    const dispatch = useDispatch();
+    const signIn = () => {
+        dispatch(loginAction('t3@vs.ru', '1234qwer'))
+    }
 
     return (
         <ScrollView>
             <View style={styles.container}>
                 <Image style={styles.logo} source={require("../assets/ic_logo.png")} />
                 <FloatingLabelTextInput style={styles.textInputField} placeholder="Имя пользователя"
-                    onChangeText={email => setEmail(email)} />
-                <FloatingLabelTextInput style={styles.textInputField} isSecure={true} placeholder="Пароль"
-                    onChangeText={password => setPassword(password)} />
+                />
+                <FloatingLabelTextInput style={styles.textInputField} isSecure={true} placeholder="Пароль" />
                 <CustomButton style={styles.button} title="Войти"
                     onClick={() => {
-                        console.log(email, password)
-                        login(email, password)
-                            .then(json => console.log(json))
-                            .catch(error => console.log(error));
+                        // email = 't3@vs.ru';
+                        // password = '1234qwer'
+                        console.log('t3@vs.ru', '1234qwer')
+                        signIn()
                     }} />
-                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <TouchableOpacity onPress={() => {
+                    dispatch(navigateToLoginAction(false))
+                }}>
                     <Text style={styles.label}>Зарегистрироваться?</Text>
                 </TouchableOpacity>
             </View>
