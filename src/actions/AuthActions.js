@@ -2,6 +2,7 @@ import { AuthService } from '../../networking/AuthService'
 import { AsyncStorage } from 'react-native';
 
 import {getUserInfoActionCreator} from '../actions/UserActions'
+import {getTransactionsActionCreator} from '../actions/TransactionAction'
 
 export const AUTH_SUCCESS_ACTION = 'AUTH_SUCCESS_ACTION'
 export const NAVIGATE_TO_LOGIN = 'NAVIGATE_TO_LOGIN'
@@ -17,6 +18,7 @@ export function loginAction(email, password) {
             await AsyncStorage.setItem('token', result.data.id_token)
 
             dispatch(getUserInfoActionCreator())
+            dispatch(getTransactionsActionCreator())
         }
         catch (error) {
             console.log(error.message)
