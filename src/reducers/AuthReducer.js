@@ -1,7 +1,6 @@
 import { AUTH_SUCCESS_ACTION, NAVIGATE_TO_LOGIN } from "../actions/AuthActions"
 
 const INITIAL_STATE = {
-    token: '',
     isAuthorized: false
 }
 

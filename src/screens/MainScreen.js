@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View, FlatList } from 'react-native'
-import { Container, Label } from 'native-base';
+import { Container, Content, Label } from 'native-base';
 
-import { navigateToLoginAction } from "../actions/AuthActions"
+import { navigateToLoginAction } from "../actions/AuthActions";
+import CustomButton from '../../components/CustomButton'
+
 import TransactionItem from '../../components/TransactionItem';
 
 export class MainScreen extends React.Component {
@@ -16,21 +18,24 @@ export class MainScreen extends React.Component {
             navigation.navigate('AuthorizationScreen')
         }
         return (
-            <Container>
-                <View style={{
-                    flexDirection: 'row', alignSelf: 'flex-start'
-                }}>
-                    <Label style={styles.balanceLabel}>Баланс: </Label>
-                    <Label style={styles.balanceAmountLabel}>{balance} </Label>
-                </View>
-                <FlatList
-                    data={transactions}
-                    renderItem={({ item, index }) => (
-                        <TransactionItem item={item} />
-                    )}
-                    keyExtractor={item => item.id}
-                />
-
+            <Container style={styles.container}>
+                <Content>
+                    <View style={{
+                        flexDirection: 'row', alignSelf: 'flex-start'
+                    }}>
+                        <Label style={styles.balanceLabel}>Баланс: </Label>
+                        <Label style={styles.balanceAmountLabel}>{balance} </Label>
+                    </View>
+                    <CustomButton style={styles.button} title="Создать новую транзакцию"
+                        onClick={() => console.log('qweqwe')} />
+                    <FlatList
+                        data={transactions}
+                        renderItem={({ item }) => (
+                            <TransactionItem item={item} />
+                        )}
+                        keyExtractor={item => item.id}
+                    />
+                </Content>
             </Container>
         );
 
@@ -38,6 +43,11 @@ export class MainScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'stretch',
+    },
     balanceLabel: {
         fontSize: 20,
         marginVertical: 10,
@@ -48,7 +58,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontStyle: 'italic',
         marginVertical: 10,
-    }
+    },
+    button: {
+        marginTop: 10,
+        marginBottom: 10,
+        marginStart: 60,
+        marginEnd: 60
+    },
 });
 
 const mapStateToProps = state => {
