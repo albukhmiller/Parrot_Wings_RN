@@ -1,14 +1,16 @@
 import { AuthService } from '../../networking/AuthService'
 import { AsyncStorage } from 'react-native';
 
-import {getUserInfoActionCreator} from '../actions/UserActions'
-import {getTransactionsActionCreator} from '../actions/TransactionAction'
+import { getUserInfoActionCreator } from '../actions/UserActions'
+import { getTransactionsActionCreator } from '../actions/TransactionAction'
 
 export const AUTH_SUCCESS_ACTION = 'AUTH_SUCCESS_ACTION'
+export const LOGOUT_ACTION = 'LOGOUT_ACTION'
 export const NAVIGATE_TO_LOGIN = 'NAVIGATE_TO_LOGIN'
 
 export const authSuccessAction = (token) => ({ type: AUTH_SUCCESS_ACTION, token });
 export const navigateToLogin = (isLoginForm) => ({ type: NAVIGATE_TO_LOGIN, isLoginForm });
+export const logoutAction = () => ({ type: LOGOUT_ACTION })
 
 export function loginAction(email, password) {
     return async (dispatch) => {
@@ -29,5 +31,11 @@ export function loginAction(email, password) {
 export function navigateToLoginAction(isLoginForm) {
     return (dispatch) => {
         dispatch(navigateToLogin(isLoginForm))
+    }
+}
+
+export function logoutActionCreator() {
+    return async (dispatch) => {
+        dispatch(logoutAction())
     }
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View, FlatList } from 'react-native'
-import { Container, Content, Label } from 'native-base';
+import { Container, Content, Label, Header, Icon, Body, Right, Title } from 'native-base';
 
-import { navigateToLoginAction } from "../actions/AuthActions";
+import { navigateToLoginAction, logoutActionCreator } from "../actions/AuthActions";
 import CustomButton from '../../components/CustomButton'
 
 import TransactionItem from '../../components/TransactionItem';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export class MainScreen extends React.Component {
 
@@ -19,6 +20,16 @@ export class MainScreen extends React.Component {
         }
         return (
             <Container style={styles.container}>
+                <Header noLeft style={{ backgroundColor: 'white' }}>
+                    <Body>
+                        <Title style={{ color: 'black' }}>Главный экран</Title>
+                    </Body>
+                    <Right>
+                        <TouchableOpacity onPress={() => this.props.logoutAction()}>
+                            <Icon name='exit' />
+                        </TouchableOpacity>
+                    </Right>
+                </Header>
                 <Content>
                     <View style={{
                         flexDirection: 'row', alignSelf: 'flex-start'
@@ -27,7 +38,7 @@ export class MainScreen extends React.Component {
                         <Label style={styles.balanceAmountLabel}>{balance} </Label>
                     </View>
                     <CustomButton style={styles.button} title="Создать новую транзакцию"
-                        onClick={() => console.log('qweqwe')} />
+                        onClick={() => logoutAction()} />
                     <FlatList
                         data={transactions}
                         renderItem={({ item }) => (
@@ -71,12 +82,13 @@ const mapStateToProps = state => {
     return {
         isAuthorized: state.authReducer.isAuthorized,
         balance: state.userReducer.userInfo.balance,
-        transactions: state.transReducer.transactions
+        transactions: state.transReducer.transactions,
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     navigateToLoginAction: () => dispatch(navigateToLoginAction(true)),
+    logoutAction: () => dispatch(logoutActionCreator())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);    

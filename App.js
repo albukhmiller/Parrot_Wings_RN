@@ -4,6 +4,7 @@ import React from 'react';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { Button } from 'native-base'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,7 +14,7 @@ import store from './src/store/store'
 import AuthorizationScreen from './src/screens/AuthorizationScreen'
 import MainScreen from './src/screens/MainScreen'
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { persistStore} from 'redux-persist';
+import { persistStore } from 'redux-persist';
 export default class App extends React.Component {
 
   constructor(props) {
@@ -40,12 +41,12 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-        <NavigationContainer theme={navigationContainer}>
-          <Stack.Navigator initialRouteName='MainScreen'>
-            <Stack.Screen options={{ headerShown: false }} name="AuthorizationScreen" component={AuthorizationScreen} />
-            <Stack.Screen name="MainScreen" component={MainScreen} options={{ title: 'Главный экран' }} />
-          </Stack.Navigator>
-        </NavigationContainer>
+          <NavigationContainer theme={navigationContainer}>
+            <Stack.Navigator initialRouteName='MainScreen'>
+              <Stack.Screen options={{ headerShown: false }} name="AuthorizationScreen" component={AuthorizationScreen} />
+              <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false }}  />
+            </Stack.Navigator>
+          </NavigationContainer>
         </PersistGate>
       </Provider>
     )
