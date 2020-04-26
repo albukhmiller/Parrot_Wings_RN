@@ -38,7 +38,7 @@ export class MainScreen extends React.Component {
                         <Label style={styles.balanceAmountLabel}>{balance} </Label>
                     </View>
                     <CustomButton style={styles.button} title="Создать новую транзакцию"
-                        onClick={() => logoutAction()} />
+                        onClick={() => navigation.navigate('CreateTransaction')} />
                     <FlatList
                         data={transactions}
                         renderItem={({ item }) => (

@@ -13,6 +13,8 @@ import store from './src/store/store'
 
 import AuthorizationScreen from './src/screens/AuthorizationScreen'
 import MainScreen from './src/screens/MainScreen'
+import CreateTransaction from './src/screens/CreateTransaction'
+
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistStore } from 'redux-persist';
 export default class App extends React.Component {
@@ -45,6 +47,7 @@ export default class App extends React.Component {
             <Stack.Navigator initialRouteName='MainScreen'>
               <Stack.Screen options={{ headerShown: false }} name="AuthorizationScreen" component={AuthorizationScreen} />
               <Stack.Screen name="MainScreen" component={MainScreen} options={{ headerShown: false }}  />
+              <Stack.Screen name="CreateTransaction" component={CreateTransaction}/>
             </Stack.Navigator>
           </NavigationContainer>
         </PersistGate>

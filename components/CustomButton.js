@@ -13,8 +13,9 @@ const styles = StyleSheet.create({
 export default function CustomButton(props) {
     return (
         <Button style={[props.style, styles.button]} rounded primary
+            disabled={props.disabled}
             onPress={props.onClick}>
             <Text>{props.title}</Text>
         </Button>
-    ); 
+    );
 } 
