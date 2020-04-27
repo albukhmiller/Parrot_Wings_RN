@@ -25,7 +25,7 @@ export class CreateTransaction extends React.Component {
 
     componentDidUpdate() {
         if (this.props.transError)
-            showError('Что-то пошло не так. Повторите отправку позднее', 'Ошибка отправки', this.props.dispatch)
+            showError('Что-то пошло не так. Повторите отправку позднее', 'Ошибка отправки')
     }
 
     componentWillUnmount() {
@@ -58,8 +58,8 @@ export class CreateTransaction extends React.Component {
     }
 
     render() {
-        const { balance, filetredUsers, dispatch } = this.props
-        console.log(dispatch)
+        const { balance, filetredUsers } = this.props
+    
         return (
             <ScrollView>
                 <Container>
@@ -167,7 +167,6 @@ const mapDispatchToProps = dispatch => ({
     getSuitableUsersAction: (filter) => dispatch(getSuitableUsersActionCreator(filter)),
     clearSuitableUsers: () => dispatch(clearSuitableUsers()),
     createTransaction: (name, amount) => dispatch(createTransactionActionCreator(name, amount)),
-    dispatch: () => { dispatch }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTransaction);    

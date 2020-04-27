@@ -21,7 +21,7 @@ export default function SignUp() {
 
     useEffect(() => {
         if (authError)
-            showError('Пользователь с таким email уже существует', 'Ошибка авторизации', dispatch)
+            showError('Пользователь с таким email уже существует', 'Ошибка авторизации')
     })
 
     const validateForEmpty = () => {

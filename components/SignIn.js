@@ -22,7 +22,7 @@ export default function SignIn() {
 
     useEffect(() => {
         if (authError)
-            showError('Неверный логин, либо пароль', 'Ошибка авторизации', dispatch)
+            showError('Неверный логин, либо пароль', 'Ошибка авторизации')
     })
     const signIn = () => {
         if (!validateEmail(username)) {
