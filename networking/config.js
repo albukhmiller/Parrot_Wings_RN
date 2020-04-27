@@ -1,12 +1,12 @@
-import { AsyncStorage } from 'react-native'
-
+import { createPersistor, getStoredState } from 'redux-persist'
+import { store } from '../src/store/store'
 const axios = require('axios').default;
 
 export async function getAxios() {
 
-    const token = await AsyncStorage.getItem('token')
+    const token = store.getState().authReducer.token
+
     if (token) {
-        console.log('Bearer ' + token)
         const client = axios.create({
             baseURL: 'http://193.124.114.46:3001',
             headers: {

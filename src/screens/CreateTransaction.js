@@ -9,6 +9,7 @@ import { getSuitableUsersActionCreator, clearSuitableUsers } from '../actions/Us
 import { createTransactionActionCreator, } from '../actions/TransactionAction'
 import FloatingLabelTextInput from '../../components/FloatingLabelTextInput'
 import CustomButton from '../../components/CustomButton'
+import { showError } from '../CustomAlert'
 
 export class CreateTransaction extends React.Component {
 
@@ -21,6 +22,12 @@ export class CreateTransaction extends React.Component {
             isSendDisabled: true
         };
     }
+
+    componentDidUpdate() {
+        if (this.props.transError)
+            showError('Что-то пошло не так. Повторите отправку позднее', 'Ошибка отправки', this.props.dispatch)
+    }
+
     componentWillUnmount() {
         this.props.clearSuitableUsers()
     }
@@ -31,12 +38,12 @@ export class CreateTransaction extends React.Component {
 
     sendFunds() {
         if (this.state.amount > this.props.balance) {
-            console.log('Превышение баланса')
+            showError('Превышение баланса', 'Некорретный ввод')
             return
         }
 
         if (this.state.recipient === this.props.username) {
-            console.log('Нельзя отправить транзакцию самому себе')
+            showError('Нельзя отправить транзакцию самому себе', 'Некорретный ввод')
             return
         }
 
@@ -51,8 +58,8 @@ export class CreateTransaction extends React.Component {
     }
 
     render() {
-        const { balance, filetredUsers } = this.props
-
+        const { balance, filetredUsers, dispatch } = this.props
+        console.log(dispatch)
         return (
             <ScrollView>
                 <Container>
@@ -66,7 +73,7 @@ export class CreateTransaction extends React.Component {
                         <Autocomplete
                             containerStyle={styles.autocompleteContainer}
                             hideResults={!this.state.isSuggestionsVisible}
-                            data={filetredUsers.filtredUsers}
+                            data={filetredUsers}
                             flatListProps={{ nestedScrollEnabled: true }}
                             placeholder="Введите имя пользователя"
                             listStyle={styles.listStyle}
@@ -93,8 +100,7 @@ export class CreateTransaction extends React.Component {
                             this.setState({
                                 amount
                             })
-                        }
-                        }
+                        }}
                         keyboardType="number-pad"
                         placeholder="Сумма перевода" />
 
@@ -152,14 +158,16 @@ const mapStateToProps = state => {
     return {
         balance: state.userReducer.userInfo.balance,
         username: state.userReducer.userInfo.name,
-        filetredUsers: state.userReducer.filteredUser
+        filetredUsers: state.userReducer.filteredUser,
+        transError: state.commonReducer.error
     };
 };
 
 const mapDispatchToProps = dispatch => ({
     getSuitableUsersAction: (filter) => dispatch(getSuitableUsersActionCreator(filter)),
     clearSuitableUsers: () => dispatch(clearSuitableUsers()),
-    createTransaction: (name, amount) => dispatch(createTransactionActionCreator(name, amount))
+    createTransaction: (name, amount) => dispatch(createTransactionActionCreator(name, amount)),
+    dispatch: () => { dispatch }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTransaction);    

@@ -10,8 +10,13 @@ export const removeSuitableUsers = () => ({ type: CLEAR_SUITABLE_USERS });
 
 export function getUserInfoActionCreator() {
     return async (dispatch) => {
+        try {
         const userInfo = await UserService.getUserInfo();
         dispatch(getUserInfoAction(userInfo.data.user_info_token));
+        }
+        catch(error) {
+            console.log(error)
+        }
     }
 }
 
@@ -24,7 +29,7 @@ export function getSuitableUsersActionCreator(filter) {
             dispatch(getSuitableUsersAction(result.data))
         }
         catch (error) {
-            dispatch(getSuitableUsersAction([]))
+           console.log(error)
         }
     }
 }

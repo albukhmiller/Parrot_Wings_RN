@@ -1,5 +1,6 @@
 import AuthReducer from './AuthReducer'
 import UserReducer from './UserReducer'
+import CommonReducer from './CommonReducer'
 import TransactionReducer from './TransactionReducer'
 
 import { LOGOUT_ACTION } from "../actions/AuthActions"
@@ -10,6 +11,7 @@ const appReducer = combineReducers({
     authReducer: AuthReducer,
     userReducer: UserReducer,
     transReducer: TransactionReducer,
+    commonReducer: CommonReducer
 });
 
 const rootReducer = (state, action) => {

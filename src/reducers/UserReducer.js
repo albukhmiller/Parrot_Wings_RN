@@ -9,7 +9,8 @@ const INITIAL_STATE = {
         balance: null,
         name: null,
         email: null
-    }
+    },
+    filteredUser: []
 }
 
 export default function userReducer(state = INITIAL_STATE, action) {
@@ -25,7 +26,7 @@ export default function userReducer(state = INITIAL_STATE, action) {
             }
         }
         case GET_SUITABLE_USERS: {
-            return { ...state, filteredUser: action }
+            return { ...state, filteredUser: action.filtredUsers }
         }
 
         case CLEAR_SUITABLE_USERS: {
