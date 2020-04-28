@@ -3,7 +3,7 @@ import { store } from '../store/store'
 const axios = require('axios').default;
 
 export async function getAxios() {
-
+//string constants must be moved to Constants.js
     const token = store.getState().authReducer.token
 
     if (token) {

@@ -9,7 +9,7 @@ export class UserService {
 
     static getSuitableUsers = async (filter) => {
         const httpClient = await getAxios();
-
+    //string constants must be moved to Endpoints.js
         return await httpClient.post('/api/protected/users/list', { filter: filter })
     }
 }
