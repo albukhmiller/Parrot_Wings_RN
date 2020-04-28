@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 
 import { getSuitableUsersActionCreator, clearSuitableUsers } from '../actions/UserActions'
 import { createTransactionActionCreator, } from '../actions/TransactionAction'
-import FloatingLabelTextInput from '../../components/FloatingLabelTextInput'
-import CustomButton from '../../components/CustomButton'
+import FloatingLabelTextInput from '../components/FloatingLabelTextInput'
+import CustomButton from '../components/CustomButton'
 import { showError } from '../CustomAlert'
 
 export class CreateTransaction extends React.Component {

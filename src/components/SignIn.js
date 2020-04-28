@@ -5,11 +5,11 @@ import { StyleSheet, Image, View, ScrollView, Text, TouchableOpacity } from 'rea
 import FloatingLabelTextInput from './FloatingLabelTextInput'
 import CustomButton from './CustomButton'
 
-import { loginAction } from "../src/actions/AuthActions"
-import { navigateToLoginAction } from "../src/actions/AuthActions"
+import { loginAction } from "../actions/AuthActions"
+import { navigateToLoginAction } from "../actions/AuthActions"
 
-import { validateEmail } from '../src/Utils/Validators'
-import { showError } from '../src/CustomAlert'
+import { validateEmail } from '../Utils/Validators'
+import { showError } from '../CustomAlert'
 
 export default function SignIn() {
 
@@ -44,7 +44,7 @@ export default function SignIn() {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Image style={styles.logo} source={require("../assets/ic_logo.png")} />
+                <Image style={styles.logo} source={require("../../assets/ic_logo.png")} />
                 <FloatingLabelTextInput
                     value={username}
                     onChangeText={username => {

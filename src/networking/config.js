@@ -1,5 +1,5 @@
 import { createPersistor, getStoredState } from 'redux-persist'
-import { store } from '../src/store/store'
+import { store } from '../store/store'
 const axios = require('axios').default;
 
 export async function getAxios() {

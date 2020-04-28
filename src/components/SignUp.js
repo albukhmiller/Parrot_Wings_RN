@@ -5,10 +5,10 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import FloatingLabelTextInput from './FloatingLabelTextInput'
 import CustomButton from './CustomButton'
 
-import { validateEmail } from '../src/Utils/Validators'
-import { showError } from '../src/CustomAlert'
+import { validateEmail } from '../Utils/Validators'
+import { showError } from '../CustomAlert'
 
-import {registration} from '../src/actions/AuthActions'
+import {registration} from '../actions/AuthActions'
 
 export default function SignUp() {
     const authError = useSelector(state => state.commonReducer.error);

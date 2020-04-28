@@ -1,4 +1,4 @@
-import { AuthService } from '../../networking/AuthService'
+import { AuthService } from '../networking/AuthService'
 import { createErrorAction } from '../actions/CommonActions'
 
 import { getUserInfoActionCreator } from '../actions/UserActions'

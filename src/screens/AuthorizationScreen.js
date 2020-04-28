@@ -1,8 +1,8 @@
 import { Container } from "native-base"
 import { StyleSheet } from 'react-native'
 
-import SignIn from '../../components/SignIn';
-import SignUp from '../../components/SignUp';
+import SignIn from '../components/SignIn';
+import SignUp from '../components/SignUp';
 
 import React from 'react';
 import { connect } from 'react-redux';

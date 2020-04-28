@@ -1,4 +1,4 @@
-import { TransactionService } from '../../networking/TransactionService'
+import { TransactionService } from '../networking/TransactionService'
 import { getUserInfoActionCreator } from '../actions/UserActions'
 import { createErrorAction } from '../actions/CommonActions'
 

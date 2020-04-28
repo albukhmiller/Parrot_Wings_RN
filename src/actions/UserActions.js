@@ -1,4 +1,4 @@
-import { UserService } from '../../networking/UserService'
+import { UserService } from '../networking/UserService'
 
 export const GET_USER_INFO_ACTION = 'GET_USER_INFO_ACTION'
 export const GET_SUITABLE_USERS = 'GET_SUITABLE_USERS'

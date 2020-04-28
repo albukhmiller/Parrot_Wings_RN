@@ -4,9 +4,9 @@ import { StyleSheet, View, FlatList } from 'react-native'
 import { Container, Content, Label, Header, Icon, Body, Right, Title } from 'native-base';
 
 import { navigateToLoginAction, logoutActionCreator } from "../actions/AuthActions";
-import CustomButton from '../../components/CustomButton'
+import CustomButton from '../components/CustomButton'
 
-import TransactionItem from '../../components/TransactionItem';
+import TransactionItem from '../components/TransactionItem';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export class MainScreen extends React.Component {
